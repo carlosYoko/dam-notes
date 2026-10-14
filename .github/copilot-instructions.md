@@ -13,3 +13,22 @@ Este repositorio es una bóveda de Obsidian para apuntes del CFGS de DAM. Escrib
 - No modifiques `.obsidian/`, `.github/` ni ajustes de Git salvo petición explícita.
 - Evita incluir datos personales, credenciales, claves o información privada en notas o commits.
 - Antes de ejecutar comandos o realizar cambios amplios, explica brevemente qué harás.
+
+
+## Organización de DAM
+
+- Cada asignatura tiene su propia carpeta.
+- Cada asignatura contiene un único archivo `Diccionario.md` en su raíz.
+- Dentro de cada asignatura hay subcarpetas por tema.
+- Los apuntes extensos se guardan en las subcarpetas de los temas.
+- Los conceptos breves se guardan exclusivamente en el diccionario de la asignatura.
+- El diccionario debe estar agrupado por temas.
+- No crear diccionarios dentro de las subcarpetas.
+- No duplicar conceptos existentes.
+
+## Selección de Skills
+
+- Si el usuario proporciona conceptos o términos técnicos, utilizar `diccionario-dam`.
+- Si solicita desarrollar un tema completo, utilizar `crear-apuntes`.
+- Si el usuario no especifica el tema al añadir conceptos, preguntar antes de clasificarlos.
+- No generar ejercicios ni resúmenes salvo que se soliciten expresamente.

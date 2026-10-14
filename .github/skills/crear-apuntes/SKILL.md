@@ -2,6 +2,23 @@
 name: crear-apuntes
 description: Crear o ampliar apuntes de DAM a partir de materiales de clase, dudas y explicaciones, en Markdown compatible con Obsidian. Úsala cuando se pidan notas o documentación de un tema.
 ---
+
+## Alcance de esta Skill
+
+Esta Skill se utiliza únicamente cuando el usuario
+solicita apuntes detallados de un tema.
+
+Si el usuario proporciona una lista de conceptos
+sin pedir desarrollo extenso:
+
+- No generar apuntes completos.
+- Utilizar la Skill `diccionario-dam`.
+- Guardar los conceptos en el Diccionario.md
+  de la asignatura correspondiente.
+
+Los apuntes completos deben guardarse en la
+subcarpeta del tema, nunca en el diccionario.
+
 # Crear apuntes de DAM
 
 1. Revisa el índice de la asignatura y notas relacionadas.
