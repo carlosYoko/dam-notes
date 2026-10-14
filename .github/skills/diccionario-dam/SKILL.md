@@ -1,4 +1,3 @@
-
 ---
 name: diccionario-dam
 description: Crear y actualizar definiciones breves de conceptos técnicos en un único Diccionario.md por asignatura de DAM.
