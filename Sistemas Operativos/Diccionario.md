@@ -1,6 +1,6 @@
-# Diccionario - Sistemas Operativos
+# Sistemas Operativos
 
-## Tema 01 - Virtualización
+## Virtualización
 
 ### Oracle VM VirtualBox Extension Pack
 
