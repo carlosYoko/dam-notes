@@ -8,6 +8,8 @@ Representación de los datos, sus características y sus relaciones, independien
 
 **Para qué sirve:** Organiza los requisitos de información y orienta el diseño de la base de datos.
 
+**Ejemplo:** Un modelo lógico de una tienda puede definir las entidades `Cliente` y `Pedido`, sus atributos y la relación por la que un cliente realiza pedidos.
+
 ### Entidad e instancia
 
 Una entidad es una clase de objetos sobre la que se guarda información; una instancia es un objeto concreto de esa clase. «Cliente» es una entidad; «el cliente con DNI 12345678A» es una instancia.
