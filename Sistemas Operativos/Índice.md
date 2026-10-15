@@ -6,4 +6,4 @@ Mantén separados el material original, los apuntes de estudio, los ejercicios y
 
 ## Diccionario
 
-- [[Diccionario]]
+- [[Bases de Datos/Diccionario]]
