@@ -46,7 +46,7 @@ Identificador creado expresamente, sin significado propio para el negocio, como 
 
 ### Objetivos del modelo entidad-relación
 
-Sus cuatro objetivos generales son representar entidades y atributos, expresar relaciones y restricciones, comunicar requisitos de datos y servir de base para diseñar la base de datos.
+El objetivo del modelo entidad-relación es representar de forma clara los datos que necesita un sistema y las relaciones entre ellos. Esta representación ayuda a comprender y comunicar los requisitos de información, detectar cómo se vinculan las entidades y orientar el diseño de la base de datos antes de implementarla.
 
 ### Relación entre entidades
 
@@ -66,7 +66,7 @@ Relación de una entidad consigo misma. Por ejemplo, un empleado supervisa a otr
 
 ### Diagrama Entidad-Relación (ERD)
 
-Representación gráfica del modelo entidad-relación. Sus componentes principales son entidades, atributos, relaciones e identificadores; según la notación, también muestra restricciones como cardinalidad y opcionalidad.
+Representación gráfica del modelo entidad-relación. Incluye entidades, atributos, identificadores y relaciones, y suele indicar cardinalidad y opcionalidad. En un modelo lógico también puede mostrar tipos de datos y otras restricciones; depende del nivel de detalle y de la notación utilizada.
 
 ### Diagrama de matriz
 
@@ -82,12 +82,12 @@ Entidad especializada que hereda atributos y relaciones de un supertipo y puede 
 
 ### Relación redundante
 
-Relación que repite información ya deducible por otras relaciones del modelo. Puede generar datos duplicados o inconsistentes.
+Relación que repite información ya deducible por otras relaciones del modelo. Por ejemplo, si cada pedido pertenece a un cliente y cada factura a un pedido, relacionar directamente la factura con el cliente puede ser redundante, pues el cliente se obtiene desde el pedido.
 
 ### Entidad de intersección
 
-Entidad que representa la asociación entre entidades cuando su relación es muchos a muchos. La descompone en relaciones uno a muchos y puede guardar datos propios de la asociación.
+Entidad que representa la asociación entre entidades cuando su relación es muchos a muchos. La descompone en relaciones uno a muchos y puede guardar datos propios de la asociación. Por ejemplo, `Matrícula` relaciona `Alumno` y `Asignatura`, y puede incluir la fecha de matrícula.
 
 ### Relación de jerarquía
 
-Relación «es un» entre un supertipo y sus subtipos. En un ERD se representa conectando el supertipo con sus subtipos mediante una notación de especialización, que puede variar según la herramienta.
+Relación «es un» entre un supertipo y sus subtipos. En un ERD se representa conectando el supertipo con sus subtipos mediante una notación de especialización, que puede variar según la herramienta. Por ejemplo, `Vehículo` puede ser el supertipo de `Coche` y `Motocicleta`.
