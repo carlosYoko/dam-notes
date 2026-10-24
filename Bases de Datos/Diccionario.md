@@ -98,6 +98,17 @@ Sí, una entidad puede relacionarse consigo misma: es una **relación recursiva*
 
 **Ejemplo:** Un `Empleado` supervisa a otros empleados. Los papeles son **supervisor** y **supervisado**. Si cada empleado tiene como máximo un supervisor y un supervisor puede dirigir a varios empleados, la relación es `1:N`.
 
+**Ejemplo de datos en `Empleado`:**
+
+| id_empleado | nombre | id_supervisor |
+| --- | --- | --- |
+| 1 | Ana | NULL |
+| 2 | Luis | 1 |
+| 3 | Marta | 1 |
+| 4 | Pedro | 2 |
+
+`id_supervisor` hace referencia a `id_empleado` de la misma tabla. Ana supervisa a Luis y Marta; Luis es supervisado por Ana y, a su vez, supervisa a Pedro. `NULL` indica que Ana no tiene supervisor.
+
 ### Diagrama Entidad-Relación (ERD)
 
 Representación gráfica del modelo entidad-relación. Incluye entidades, atributos, identificadores y relaciones, y suele indicar cardinalidad y opcionalidad. En un modelo lógico también puede mostrar tipos de datos y otras restricciones; depende del nivel de detalle y de la notación utilizada.
