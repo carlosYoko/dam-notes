@@ -102,6 +102,13 @@ Sí, una entidad puede relacionarse consigo misma: es una **relación recursiva*
 
 Representación gráfica del modelo entidad-relación. Incluye entidades, atributos, identificadores y relaciones, y suele indicar cardinalidad y opcionalidad. En un modelo lógico también puede mostrar tipos de datos y otras restricciones; depende del nivel de detalle y de la notación utilizada.
 
+**Componentes de un ERD:**
+- **Entidades:** Objetos o conceptos sobre los que se guarda información, como `Cliente`.
+- **Atributos:** Características de las entidades, como `nombre`.
+- **Identificadores únicos (UID):** Atributos que distinguen cada instancia, como `id_cliente`.
+- **Relaciones:** Asociaciones entre entidades, como «un cliente realiza pedidos».
+- **Cardinalidad y opcionalidad:** Indican cuántas instancias pueden relacionarse y si su participación es obligatoria u opcional.
+
 ### Diagrama de matriz
 
 Tabla que coloca las entidades en filas y columnas para analizar sus posibles relaciones. En cada cruce se puede indicar si existe una relación, su nombre y, según la convención empleada, su cardinalidad.
