@@ -50,6 +50,12 @@ Modalidad de licencia habitual en software propietario preinstalado en equipos n
 
 Paquete adicional de VirtualBox que amplía sus funciones, por ejemplo, con soporte para dispositivos USB 2.0 y 3.0 en las máquinas virtuales. Se instala aparte del programa principal.
 
+## Red NAT (Network Address Translation)
+
+Red que utiliza **traducción de direcciones de red (NAT)** para permitir que equipos con direcciones IP privadas accedan a otra red, como Internet. El router o el software de virtualización traduce las direcciones; habitualmente también utiliza los puertos para que varios equipos compartan una misma IP de salida.
+
+**En VirtualBox:** El modo **NAT** permite que una máquina virtual acceda al exterior utilizando la conexión del anfitrión. Las conexiones entrantes hacia sus servicios suelen requerir **redirección de puertos**. La modalidad **Red NAT**, a diferencia del NAT individual, permite además la comunicación entre máquinas virtuales conectadas a la misma red NAT.
+
 ## Retail
 
 Modalidad de licencia de software vendido por separado al usuario final. Habitualmente permite trasladarlo a otro equipo, dejando de utilizarlo en el anterior, según las condiciones del producto. No implica que pueda usarse simultáneamente en varios equipos.
