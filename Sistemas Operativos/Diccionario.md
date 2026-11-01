@@ -22,6 +22,21 @@ Firmware moderno que inicializa el hardware y prepara el arranque del sistema op
 
 Licencia de software libre que permite usar, estudiar, modificar y distribuir el programa. Es una licencia con **copyleft**: al distribuir el programa o una obra derivada, deben respetarse sus condiciones, como mantener la licencia GPL y proporcionar el código fuente correspondiente en los términos exigidos. No obliga a publicar las modificaciones que se usan únicamente de forma privada.
 
+## Guest Additions
+
+Conjunto de **controladores y utilidades de VirtualBox** que se instalan en el sistema operativo invitado para mejorar el funcionamiento de la máquina virtual y su integración con el equipo anfitrión.
+
+**¿Para qué sirven?**
+- Ajustar automáticamente la resolución de pantalla al cambiar el tamaño de la ventana de la VM y mejorar el soporte gráfico.
+- Integrar el ratón para pasar entre el anfitrión y la VM sin tener que capturarlo y liberarlo manualmente.
+- Permitir carpetas compartidas entre el anfitrión y el invitado.
+- Facilitar el portapapeles compartido y el arrastrar y soltar, cuando el sistema invitado los admite y se habilitan en la configuración.
+- Sincronizar la hora del invitado con la del anfitrión.
+
+**¿Dónde se instalan?** Dentro de **cada máquina virtual**, en su sistema operativo invitado, **no en el anfitrión (host)**. Por ejemplo, si utilizas Windows como anfitrión y Ubuntu en una VM, las Guest Additions se instalan en Ubuntu. Desde la ventana de VirtualBox se puede insertar la imagen de CD de las Guest Additions y ejecutar su instalador **dentro del invitado**.
+
+**No confundir con el [[Sistemas Operativos/Diccionario#Oracle VM VirtualBox Extension Pack|Extension Pack]]:** este se instala en el **anfitrión** para ampliar las funciones de VirtualBox; las Guest Additions se instalan en el **invitado** para mejorar su integración.
+
 ## LGPL (GNU Lesser General Public License)
 
 Licencia de software libre con **copyleft limitado**, utilizada principalmente en bibliotecas. Permite que programas con otras licencias, incluso propietarios, utilicen la biblioteca si cumplen sus condiciones. Las modificaciones de la propia biblioteca siguen sujetas a la LGPL; al distribuirla, deben cumplirse las obligaciones relativas al código fuente y a la posibilidad de sustituir o volver a enlazar la biblioteca, según la versión y el modo de distribución.
