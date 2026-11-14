@@ -7,6 +7,7 @@ Bienvenido a la bóveda. Crea una carpeta por asignatura e incluye un archivo `�
 - [[Sistemas Operativos/Índice]]
 - [[Bases de Datos/Índice]]
 - [[Competencias Digitales/Índice]]
+- [[IA Generativa/Índice]]
 
 ## Rutina sencilla
 
