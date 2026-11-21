@@ -4,4 +4,4 @@
 
 Mantén separados el material original, los apuntes de estudio, los ejercicios y los repasos cuando el volumen lo justifique.
 
-- [[Bases de Datos/Diccionario]] — conceptos del diagrama Entidad-Relación.
+- [[Bases de Datos/Diccionario]] — conceptos del diagrama Entidad-Relación y normalización (1FN, 2FN y 3FN).

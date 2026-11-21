@@ -155,6 +155,127 @@ Una relación jerárquica organiza instancias o entidades en **niveles**, como u
 
 **Diferencia:** «Un empleado depende de otro» describe una jerarquía entre instancias; «un coche es un vehículo» describe una jerarquía entre tipos.
 
+## Normalización de bases de datos
+
+### Normalización
+
+**Idea clave: Normalización → Organiza y reduce redundancia.**
+
+La **normalización** es un proceso de organización de las tablas de una base de datos relacional para reducir redundancias y evitar anomalías al insertar, modificar o eliminar datos. Para aplicarla hay que conocer las claves y las dependencias entre los atributos, no solo observar los datos de ejemplo.
+
+Las formas normales son acumulativas: para cumplir **2FN** hay que cumplir **1FN**, y para cumplir **3FN** hay que cumplir **2FN**.
+
+### Conceptos previos
+
+- **Clave candidata:** Conjunto mínimo de atributos que identifica de forma única cada fila. Se corresponde con el concepto de [[Bases de Datos/Diccionario#UID candidato|UID candidato]] aplicado a una tabla.
+- **Clave primaria (PK):** Clave candidata elegida como identificador principal de la tabla. Puede ser simple o compuesta.
+- **Clave foránea (FK):** Atributo o conjunto de atributos que referencia una clave primaria o una clave alternativa única de otra tabla, o de la misma tabla.
+- **Dependencia funcional (`A → B`):** Un valor de `A` determina un único valor de `B`. Por ejemplo, `id_alumno → nombre_alumno` si cada identificador corresponde a un solo alumno.
+- **Atributo primo:** Atributo que pertenece a alguna clave candidata. Un atributo **no primo** no pertenece a ninguna.
+
+### Determinante
+
+**Idea clave: Determinante → Determina.**
+
+Un **determinante** es el atributo o conjunto de atributos situado a la izquierda de una dependencia funcional. En `A → B`, `A` es el determinante: cada valor de `A` determina un único valor de `B`.
+
+**Ejemplo:** En `id_departamento → nombre_departamento`, el determinante es `id_departamento`, porque cada identificador de departamento tiene asociado un único nombre.
+
+**Importante:** Un determinante no tiene por qué ser una clave candidata de la tabla. En una tabla de alumnos, `id_departamento` puede determinar el nombre del departamento sin identificar de forma única a cada alumno.
+
+### Primera forma normal (1FN)
+
+Una tabla está en **1FN** cuando cada celda contiene un único valor del dominio correspondiente, sin listas ni grupos repetidos de atributos. Los valores deben ser **atómicos para el uso previsto**: no necesitan dividirse para realizar las operaciones del sistema.
+
+**Ejemplo que no cumple 1FN:** Se guardan varios teléfonos en la misma celda.
+
+| id_alumno | nombre | telefonos |
+| --- | --- | --- |
+| 1 | Ana | 600111111, 600222222 |
+| 2 | Luis | 600333333 |
+
+**Solución:** Separar los alumnos de sus teléfonos.
+
+**Tabla `Alumno`:**
+
+| id_alumno (PK) | nombre |
+| --- | --- |
+| 1 | Ana |
+| 2 | Luis |
+
+**Tabla `TelefonoAlumno`:**
+
+| id_alumno (FK) | telefono |
+| --- | --- |
+| 1 | 600111111 |
+| 1 | 600222222 |
+| 2 | 600333333 |
+
+La clave primaria de `TelefonoAlumno` es (`id_alumno`, `telefono`). Cada teléfono ocupa una fila y no hacen falta columnas como `telefono1`, `telefono2` o `telefono3`.
+
+### Segunda forma normal (2FN)
+
+Una tabla está en **2FN** si está en **1FN** y cada atributo no primo depende de **la totalidad de cada clave candidata**, no solo de una parte de ella. Es decir, no existen **dependencias parciales** de atributos no primos respecto de una clave candidata.
+
+**Ejemplo que cumple 1FN, pero no 2FN:** Suponemos que cada alumno tiene una sola nota por asignatura. La única clave candidata, elegida como primaria, es (`id_alumno`, `id_asignatura`).
+
+| id_alumno | id_asignatura | nombre_alumno | nombre_asignatura | nota |
+| --- | --- | --- | --- | --- |
+| 1 | BD | Ana | Bases de Datos | 8 |
+| 1 | PROG | Ana | Programación | 9 |
+| 2 | BD | Luis | Bases de Datos | 7 |
+
+**Problema:**
+
+- `id_alumno → nombre_alumno`: el nombre del alumno depende solo de una parte de la clave.
+- `id_asignatura → nombre_asignatura`: el nombre de la asignatura depende solo de otra parte.
+- (`id_alumno`, `id_asignatura`) `→ nota`: la nota sí depende de la combinación completa.
+
+**Solución:** Descomponer la tabla en:
+
+- `Alumno(id_alumno, nombre_alumno)`: PK `id_alumno`.
+- `Asignatura(id_asignatura, nombre_asignatura)`: PK `id_asignatura`.
+- `Matricula(id_alumno, id_asignatura, nota)`: PK compuesta (`id_alumno`, `id_asignatura`); ambos identificadores son también FK a sus respectivas tablas.
+
+Así, el nombre de Ana y el nombre de Bases de Datos se almacenan una sola vez en sus tablas correspondientes.
+
+**Importante:** Si todas las claves candidatas son de un solo atributo, una tabla en 1FN cumple automáticamente 2FN. No basta con mirar solo la clave primaria si existen otras claves candidatas.
+
+### Tercera forma normal (3FN)
+
+Una tabla está en **3FN** si está en **2FN** y no tiene dependencias transitivas de atributos no primos respecto de las claves candidatas. En términos prácticos, se evita que un dato no clave determine otro dato no clave dentro de la misma tabla.
+
+**Definición precisa:** Para toda dependencia funcional no trivial `X → A`, `X` debe ser una superclave (identificar de forma única cada fila) o `A` debe ser un atributo primo. Una dependencia es no trivial cuando `A` no forma parte de `X`.
+
+**Ejemplo que cumple 2FN, pero no 3FN:** Cada alumno pertenece a un departamento y cada departamento tiene un único nombre. La única clave candidata es `id_alumno`.
+
+| id_alumno (PK) | nombre_alumno | id_departamento | nombre_departamento |
+| --- | --- | --- | --- |
+| 1 | Ana | D01 | Informática |
+| 2 | Luis | D01 | Informática |
+| 3 | Marta | D02 | Administración |
+
+**Problema:** Existe una dependencia transitiva:
+
+`id_alumno → id_departamento → nombre_departamento`
+
+El nombre del departamento se repite por cada alumno. Si cambia, habría que modificar varias filas y podrían aparecer inconsistencias.
+
+**Solución:** Separar los datos en:
+
+- `Alumno(id_alumno, nombre_alumno, id_departamento)`: PK `id_alumno`; `id_departamento` es FK.
+- `Departamento(id_departamento, nombre_departamento)`: PK `id_departamento`.
+
+El nombre del departamento queda almacenado una sola vez y se consulta relacionando ambas tablas.
+
+### Resumen de las tres formas normales
+
+| Forma normal | Condición principal | Problema que elimina |
+| --- | --- | --- |
+| **1FN** | Un valor por celda, sin listas ni grupos repetidos. | Varios valores dentro de un mismo campo. |
+| **2FN** | Cumplir 1FN y evitar dependencias parciales de atributos no primos respecto de claves candidatas. | Datos que dependen solo de parte de una clave compuesta. |
+| **3FN** | Cumplir 2FN y evitar dependencias transitivas de atributos no primos respecto de claves candidatas. | Datos no clave que dependen de otros datos no clave. |
+
 ## Notas relacionadas
 
 - [[Bases de Datos/Índice|Índice de Bases de Datos]].
