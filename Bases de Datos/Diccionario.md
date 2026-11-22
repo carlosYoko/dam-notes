@@ -63,12 +63,16 @@ Identificador creado expresamente, sin significado propio para el negocio, como 
 
 ### Objetivos del modelo entidad-relación
 
-Los objetivos pueden resumirse en estos **cuatro puntos**:
+Los **cuatro objetivos del modelo entidad-relación (ER)** son:
 
-1. **Recoger los requisitos de información:** Identificar qué datos necesita almacenar el sistema.
-2. **Organizar los datos y sus reglas:** Definir entidades, atributos, identificadores, relaciones y restricciones del negocio.
-3. **Comunicar y validar el diseño:** Ofrecer una representación comprensible para usuarios y diseñadores, que permita detectar omisiones, ambigüedades y redundancias.
-4. **Servir de base para diseñar la base de datos:** Facilitar la transformación del modelo en una estructura de tablas y claves antes de su implementación.
+1. **Capturar toda la información necesaria:** Recoger los datos que necesita el sistema según los requisitos del negocio, sin omitir información relevante.
+2. **Que cada dato aparezca una sola vez:** Evitar representar el mismo hecho de forma redundante. Esto no impide que distintas instancias compartan un valor ni que se utilicen claves foráneas al pasar al modelo relacional.
+3. **No modelar datos derivados:** Evitar almacenar como datos independientes los que pueden calcularse a partir de otros. Por ejemplo, guardar la fecha de nacimiento en lugar de la edad, que se calcula con la fecha actual. Si se representan atributos derivados en el diagrama, deben distinguirse como tales.
+4. **Situar cada dato en un lugar lógico y previsible:** Asignar cada atributo a la entidad o relación que describe. Por ejemplo, el nombre del cliente pertenece a `Cliente`, no a `Pedido`.
+
+**Para qué sirve:** El modelo organiza entidades, atributos, identificadores, relaciones y restricciones del negocio; permite comunicar y validar el diseño con usuarios y diseñadores, detectar omisiones y ambigüedades y servir de base para su transformación en tablas y claves.
+
+**Relacionado:** [[Bases de Datos/Diccionario#Normalización|Normalización]] y [[Bases de Datos/Diccionario#Relación redundante|Relación redundante]].
 
 ### Relación entre entidades
 
